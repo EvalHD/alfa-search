@@ -44,9 +44,9 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: 4. Android SDK einrichten
+      - name: 4. Android-SDK-Lizenzen akzeptieren (SDK ist vorinstalliert)
         if: steps.unpack.outputs.found == 'true'
-        uses: android-actions/setup-android@v3
+        run: yes | sdkmanager --licenses > /dev/null || true
 
       - name: 5. Gradle 8.7 einrichten
         if: steps.unpack.outputs.found == 'true'
